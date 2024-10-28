@@ -95,10 +95,23 @@ class block_homework extends block_base {
                     //Get appropriate icon for file type
                     $iconurl = $OUTPUT->image_url(file_mimetype_icon($file->mimetype));
 
+                    // Initialize page count as null
+                    $pagecount = null;
+
+                    // Check file type and get page count if it's a PDF or DOCX
+                    if (str_ends_with(strtolower($filename), '.pdf')) {
+                        $pdfpath = $file->get_filepath() . $filename;
+                        //$pagecount = Get page count
+                    } elseif (str_ends_with(strtolower($filename), '.docx')) {
+                        $docxpath = $file->get_filepath() . $filename;
+                        //$pagecount = Get page count
+                    }
+
                     $files[] = [
                         'fileurl' => $url->out(),
                         'filename' => $filename,
-                        'iconurl' => $iconurl
+                        'iconurl' => $iconurl,
+                        'pagecount' => $pagecount,
                     ];
                 }
             }

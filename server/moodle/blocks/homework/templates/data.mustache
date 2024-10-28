@@ -34,6 +34,11 @@
                 {{#files}}
                     <img src="{{iconurl}}" alt="File icon">
                     <a href="{{fileurl}}" download="{{filename}}">{{filename}}</a>
+
+                    <!-- Conditionally show page count if it exists -->
+                    {{#pagecount}}
+                        <p>Pages: {{pagecount}}</p>
+                    {{/pagecount}}
                 {{/files}}
             </div>
         {{/data}}
