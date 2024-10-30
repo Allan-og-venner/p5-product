@@ -2,7 +2,9 @@
 
 namespace block_homework\tests;
 
+use pdf_word_count_reader;
 use stdClass;
+use function PHPUnit\Framework\assertEquals;
 
 class block_homework_test extends \basic_testcase {
     public function test_course_homeworkfilter(){
@@ -44,6 +46,28 @@ class block_homework_test extends \basic_testcase {
         $tmpArray = \block_homework::filter_homework_content('http://localhost/course/view.php?id=3',$homeworks);
         $this->assertNotContains($testhomework2, $tmpArray);
 
+
+
+
+
+    }
+
+    public function test_count_words_in_pdf()
+    {
+
+        $file = file_get_contents('server/moodle/blocks/homework/tests/TESTPDF.pdf');
+        $averagewordsperminute = 220;
+
+        $algorithm = new pdf_word_count_reader();
+
+        // Use word reading algorithm and save the value in wordcount
+        $wordcount = $algorithm->count_words_in_pdf($file);
+
+        // Calculate the time estimate based on word count and average words per minute
+        $timeestimate = $wordcount / $averagewordsperminute;
+
+        assertEquals($wordcount,1348);
+        assertEquals($timeestimate,6.1272727272727);
     }
 
 

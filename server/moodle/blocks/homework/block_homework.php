@@ -118,12 +118,7 @@ class block_homework extends block_base {
                         // Calculate the time estimate based on word count and average words per minute
                         $timeestimate = $wordcount / $averagewordsperminute;
 
-
-                    } elseif (str_ends_with(strtolower($filename), '.docx')) {
-                        $docxpath = $file->get_filepath() . $filename;
-                        //$pagecount = Get page count
                     }
-
 
                     $files[] = [
                         'fileurl' => $url->out(),
