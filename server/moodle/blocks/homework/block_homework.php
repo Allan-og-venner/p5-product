@@ -98,20 +98,38 @@ class block_homework extends block_base {
                     // Initialize page count as null
                     $pagecount = null;
 
+
+                    // Initialize time estimate as null
+                    $timeestimate = null;
+
+                    // Initialize average words read per minute
+                    $averagewordsperminute = 220;
+
                     // Check file type and get page count if it's a PDF or DOCX
                     if (str_ends_with(strtolower($filename), '.pdf')) {
                         $pdfpath = $file->get_filepath() . $filename;
-                        //$pagecount = Get page count
+
+                        //  Initialize word count reader
+                        $algorithm = new pdf_word_count_reader();
+
+                        // Use word reading algorithm and save the value in wordcount
+                        $wordcount = $algorithm->count_words_in_pdf($pdfpath);
+
+                        // Calculate the time estimate based on word count and average words per minute
+                        $timeestimate = $wordcount / $averagewordsperminute;
+
+
                     } elseif (str_ends_with(strtolower($filename), '.docx')) {
                         $docxpath = $file->get_filepath() . $filename;
                         //$pagecount = Get page count
                     }
 
+
                     $files[] = [
                         'fileurl' => $url->out(),
                         'filename' => $filename,
                         'iconurl' => $iconurl,
-                        'pagecount' => $pagecount,
+                        'timeestimate' => $timeestimate,
                     ];
                 }
             }
