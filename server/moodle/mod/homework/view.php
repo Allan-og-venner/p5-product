@@ -105,26 +105,29 @@ $homeworkmaterials = $DB->get_records_sql(
  */
 echo '<div class="view-homework-container">';
 foreach ($homeworkmaterials as $material) : ?>
-    <div class="material"">
-        <?php if ($material->startpage != null):
+    <div class="material">
+        <?php
+        if ($material->startpage != null) {
             echo '<i class="fa-solid fa-book"></i>';
-        elseif ($material->link != null):
+        } else if ($material->link != null) {
             echo '<i class="fa-solid fa-link"></i>';
-        elseif ($material->starttime != null):
+        } else if ($material->starttime != null) {
             echo '<i class="fa-solid fa-play"></i>';
-        elseif ($material->file_id != null):
+        } else if ($material->file_id != null) {
             echo '<i class="fa-solid fa-file"></i>';
-        endif; ?>
+        }
+        ?>
         <div class="material-container">
         <p><?php echo htmlspecialchars($material->description) ?></p>
         <?php if ($material->startpage != null) : ?>
             <p><?php echo "Pages: " . htmlspecialchars($material->startpage) . " - " . htmlspecialchars($material->endpage) ?></p>
-        <?php if ($material->link != null) :
-        // Checks to see if a link starts with "http" if not, then add it to the string,
-        // this makes sure its is completely new site that is opened.
-        $link = !str_starts_with($material->link, 'http') ? "https://" . $material->link : $material->link;
-        ?><p><?php echo 'Link: <a href="' . $link . '" target="_blank">Click here</a>';?></p>
-        <?php endif; ?>
+                <?php if ($material->link != null) :
+                    // Checks to see if a link starts with "http" if not, then add it to the string,
+                    // this makes sure its is completely new site that is opened.
+                    $link = !str_starts_with($material->link, 'http') ? "https://" . $material->link : $material->link;
+                    ?>
+            <p><?php echo 'Link: <a href="' . $link . '" target="_blank">Click here</a>';?></p>
+                <?php endif; ?>
         </div>
             <?php
         else :

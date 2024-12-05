@@ -108,15 +108,17 @@ foreach ($homeworkmaterials as $materials) :
 
     <div class="material">
 
-        <?php if ($materials->startpage != null):
+        <?php
+        if ($materials->startpage != null) {
             echo '<i class="fa-solid fa-book"></i>';
-        elseif ($materials->link != null):
+        } else if ($materials->link != null) {
             echo '<i class="fa-solid fa-link"></i>';
-        elseif ($materials->starttime != null):
+        } else if ($materials->starttime != null) {
             echo '<i class="fa-solid fa-play"></i>';
-        elseif ($materials->file_id != null):
+        } else if ($materials->file_id != null) {
             echo '<i class="fa-solid fa-file"></i>';
-        endif; ?>
+        }
+        ?>
 
     <div class="material-container">
 

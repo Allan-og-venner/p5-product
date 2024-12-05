@@ -16,7 +16,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-// require for the pdf reader
+// Require for the pdf reader.
 require_once(__DIR__ . '/pdf_reader.php');
 /**
  * Block definition class for the block_homework plugin.
@@ -91,7 +91,7 @@ class block_homework extends block_base {
 
             foreach ($materialrecords as $material) {
                 if ($material->startime != null && $material->endtime != null) {
-                    $tmp['expectedTime'] += ceil(($material->endtime - $material->starttime)/60);
+                    $tmp['expectedTime'] += ceil(($material->endtime - $material->starttime) / 60);
                 }
                 if ($material->startpage != null && $material->endpage != null) {
                     $tmp['expectedTime'] += ceil(($material->endpage - $material->startpage) * $stats["weightedreadingspeed"]);
@@ -134,23 +134,30 @@ class block_homework extends block_base {
                     // Get appropriate icon for file type.
                     $iconurl = $OUTPUT->image_url(file_mimetype_icon($file->mimetype));
 
-                    // Initialize time estimate as null
+                    // Initialize time estimate as null.
                     $timeestimate = null;
 
-                    // Initialize average words read per minute
+                    // Initialize average words read per minute.
                     $averagewordsperminute = 220;
 
-                    $file = $fs->get_file($contextid, $component, $filearea, $itemid, $filepath, $filename);
+                    $file = $fs->get_file(
+                        $contextid,
+                        $component,
+                        $filearea,
+                        $itemid,
+                        $filepath,
+                        $filename,
+                    );
 
-                    // Check file type and get page count if it's a PDF or DOCX
+                    // Check file type and get page count if it's a PDF or DOCX.
                     if (str_ends_with(strtolower($filename), '.pdf')) {
-                        // Initialize word count reader
+                        // Initialize word count reader.
                         $algorithm = new pdf_reader();
 
-                        // Use word reading algorithm and save the value in wordcount
+                        // Use word reading algorithm and save the value in wordcount.
                         $wordcount = $algorithm->countwordsinpdf($file);
 
-                        // Calculate the time estimate based on word count and average words per minute
+                        // Calculate the time estimate based on word count and average words per minute.
                         $timeestimate = $wordcount / $averagewordsperminute;
                     }
 
@@ -303,7 +310,10 @@ class block_homework extends block_base {
             $percentcompleted = count($records) / count($availablematerials) * 100;
         }
 
-        return ['timeperday' => $timeperday, 'percentcompleted' => $percentcompleted, 'weightedreadingspeed' => $weightedreadingspeed];
+        return [
+            'timeperday' => $timeperday,
+            'percentcompleted' => $percentcompleted,
+            'weightedreadingspeed' => $weightedreadingspeed,
+        ];
     }
-    
 }
