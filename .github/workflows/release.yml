@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout Repository
       uses: actions/checkout@v3
 
     - name: ZIP block_homework
@@ -20,14 +20,15 @@ jobs:
       run: |
         zip -r dist/mod_homework.zip server/moodle/mod/homework/
 
-    - name: Create or update release
+    - name: Create or Update Release
       id: create_release
-      uses: actions/create-release@v1
+      uses: joutvhu/create-release@v1
       with:
-        tag_name: 'v0.0.${{ github.run_number }}'
-        release_name: 'Homework Plugin v0.0.${{ github.run_number }}'
+        tag_name: 'latest'
+        release_name: 'Homework Plugin'
         draft: false
         prerelease: false
+        on_release_exists: 'update'
         body: |
           This release contains the zipped Moodle homework plugins:
           - block_homework
