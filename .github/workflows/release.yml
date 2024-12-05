@@ -29,6 +29,7 @@ jobs:
         draft: false
         prerelease: false
         on_release_exists: 'update'
+        remove_assets: true
         body: |
           This release contains the zipped Moodle homework plugins:
           - block_homework
