@@ -95,7 +95,7 @@ class get_infohomework_modal extends external_api {
             }
 
             if ($material->starttime != null && $material->endtime != null) {
-                $material->expectedTime = ceil(($material->endtime - $material->starttime)/60);
+                $material->expectedTime = ceil(($material->endtime - $material->starttime) / 60);
             }
         }
 

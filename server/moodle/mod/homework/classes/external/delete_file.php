@@ -20,6 +20,7 @@
  * @package   mod_homework
  * @copyright 2024, cs-24-sw-5-01 <cs-24-sw-5-01@student.aau.dk>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ *
  */
 
 namespace mod_homework\external;
@@ -27,7 +28,6 @@ namespace mod_homework\external;
 use core_external\external_api;
 use core_external\external_function_parameters;
 use core_external\external_value;
-
 use core\exception\coding_exception;
 use core\exception\invalid_parameter_exception;
 use core\exception\moodle_exception;

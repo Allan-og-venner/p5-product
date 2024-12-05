@@ -305,6 +305,13 @@ final class delete_homework_test extends advanced_testcase {
         \mod_homework\external\delete_file::execute($homeworkid, $invalidfileid);
     }
 
+    /**
+     * Tests if an exception is thrown when deleting non homework
+     * @runInSeparateProcess
+     * @throws moodle_exception
+     * @throws dml_exception
+     * @covers :: \mod_homework\external\save_homework_material & mod_homework\external\delete_homework_material
+     */
     public function test_delete_non_existing_homework(): void {
         // Call the external class method.
         $inputfield = 'Test Video';

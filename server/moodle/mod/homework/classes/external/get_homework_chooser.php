@@ -55,7 +55,7 @@ class get_homework_chooser extends external_api {
      * @param $cmid - The current modules id
      * @return string[] - The html to be shown client-side
      */
-    public static function execute() : array {
+    public static function execute(): array {
         $mustache = new Mustache_Engine();
 
         $templatepath = __DIR__ . "/../../templates/get_homework_chooser.mustache";
@@ -71,7 +71,7 @@ class get_homework_chooser extends external_api {
      *
      * @return external_single_structure - Is a definition of the functions return type and a description of it
      */
-    public static function execute_returns() : external_single_structure {
+    public static function execute_returns(): external_single_structure {
         return new external_single_structure([
             'html' => new external_value(PARAM_RAW, 'HTML for the homework chooser modal'),
         ]);

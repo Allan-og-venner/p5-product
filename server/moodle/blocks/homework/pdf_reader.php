@@ -16,7 +16,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-// Require for the pdfparser library
+// Require for the pdfparser library.
 require_once(__DIR__ . "/../../lib/pdfparser/pdfparser-2.11.0/alt_autoload.php-dist");
 
 /**
@@ -34,52 +34,52 @@ class pdf_reader {
      */
     public function countwordsinpdf($file) {
 
-        // Make sure the file object is of type stored_file and contains the correct file path
+        // Make sure the file object is of type stored_file and contains the correct file path.
         if (!$file instanceof \stored_file) {
             throw new \Exception("Expected a stored_file object.");
         }
 
-        // We need to make a temporary file because moodle stores files in a virtual file system and the library
-        // needs a physical file to read it and count the words
+        // We need to make a temporary file because moodle stores files in a virtual file system and the library.
+        // needs a physical file to read it and count the words.
 
-        // Get the temporary file path to save the file content for processing
+        // Get the temporary file path to save the file content for processing.
         $tempfilepath = tempnam(sys_get_temp_dir(), 'pdf_');
 
-        // Open the temporary file for writing
+        // Open the temporary file for writing.
         $filehandle = fopen($tempfilepath, 'w');
         if (!$filehandle) {
             throw new \Exception("Could not open temporary file for writing.");
         }
 
-        // Get the file content from the stored file and write it to the temporary file
+        // Get the file content from the stored file and write it to the temporary file.
         $filecontent = $file->get_content();
         fwrite($filehandle, $filecontent);
         fclose($filehandle);
 
-        // use the temp file path with the PDF parser
+        // Use the temp file path with the PDF parser.
         $pdfparser = new \Smalot\PdfParser\Parser();
 
-        // Try catch for the actual parsing and word counting, the temp file is deleted in case of errors for clean up
+        // Try catch for the actual parsing and word counting, the temp file is deleted in case of errors for clean up.
         try {
-            // Parse the PDF file using the temporary file path
+            // Parse the PDF file using the temporary file path.
             $pdf = $pdfparser->parseFile($tempfilepath);
 
-            // Get the text content of the PDF
+            // Get the text content of the PDF.
             $text = $pdf->getText();
 
-            // Count words in the PDF
+            // Count words in the PDF.
             $wordcount = str_word_count($text);
 
 
-            // Delete the temporary file after processing for clean up
+            // Delete the temporary file after processing for clean up.
             unlink($tempfilepath);
 
             return $wordcount;
         } catch (\Exception $e) {
-            // Delete the temporary file in case of error
+            // Delete the temporary file in case of error.
             unlink($tempfilepath);
 
-            // Handle any errors that occur during parsing
+            // Handle any errors that occur during parsing.
             return "Error parsing PDF: " . $e->getMessage();
         }
     }
