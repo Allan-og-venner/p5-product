@@ -1,7 +1,17 @@
-name: Upload Moodle Homework Plugin to Release
+name: Upload Moodle Homework Plugins to Release
 
 on:
   workflow_dispatch:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'server/moodle/blocks/homework/**'
+      - 'server/moodle/mod/homework/**'
+  pull_request:
+    types: [opened, reopened, synchronize]
+    paths:
+      - 'server/moodle/blocks/homework/**'
+      - 'server/moodle/mod/homework/**'
 
 jobs:
   homework-plugin-upload:
@@ -29,7 +39,6 @@ jobs:
         draft: false
         prerelease: false
         on_release_exists: 'update'
-        remove_assets: true
         body: |
           This release contains the zipped Moodle homework plugins:
           - block_homework
