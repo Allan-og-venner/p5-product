@@ -32,6 +32,8 @@ jobs:
           This release contains the zipped Moodle homework plugins:
           - block_homework
           - mod_homework
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Upload block_homework ZIP
       uses: actions/upload-release-asset@v1
