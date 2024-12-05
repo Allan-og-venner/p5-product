@@ -1,5 +1,5 @@
 <?php
-// This file is part of Moodle - http://moodle.org/
+// This file is part of Moodle - https://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -12,7 +12,7 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+// along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
  * Class that inserts testing data into the db for behat testing
@@ -23,7 +23,14 @@
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class block_homework_generator extends component_generator_base {
-    public function create_homework($homework) {
+    /**
+     * Test for create homework
+     *
+     * @param $homework
+     * @return void
+     * @throws dml_exception
+     */
+    public function create_homework($homework): void {
         global $DB;
         $DB->insert_record('homework', $homework);
     }
