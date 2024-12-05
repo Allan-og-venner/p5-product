@@ -25,7 +25,7 @@ jobs:
       uses: joutvhu/create-release@v1
       with:
         tag_name: 'latest'
-        release_name: 'Homework Plugin'
+        name: 'Homework Plugin'
         draft: false
         prerelease: false
         on_release_exists: 'update'
