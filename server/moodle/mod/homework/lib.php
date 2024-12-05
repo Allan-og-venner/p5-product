@@ -23,14 +23,13 @@
  *
  */
 
-
 /**
  *
  * @param $homeworkdata - Contains the data from homework to be added to the db
  * @return bool|int - Returns Homework id
  * @throws dml_exception - Throws error if database save fails
  */
-function homework_add_instance($homeworkdata) {
+function homework_add_instance($homeworkdata): bool|int {
     global $DB;
 
     $homeworkdata->timecreated = time();
@@ -55,7 +54,7 @@ function homework_add_instance($homeworkdata) {
  * @return bool
  * @throws dml_exception
  */
-function homework_update_instance($homeworkdata) {
+function homework_update_instance($homeworkdata): bool {
     global $DB;
 
     $homeworkdata->timemodified = time();
@@ -74,7 +73,7 @@ function homework_update_instance($homeworkdata) {
  * @return bool
  * @throws dml_exception
  */
-function homework_delete_instance($id) {
+function homework_delete_instance($id): bool {
     global $DB;
 
     $exists = $DB->get_record('homework', ['id' => $id]);
@@ -110,13 +109,13 @@ function mod_homework_pluginfile(
 ): bool {
     require_login($course, true, $cm);
 
-    // Only allow specific file areas, e.g., 'content'. Adjust as necessary.
+    // Only allow 'content' file area.
     if ($filearea !== 'content') {
         return false;
     }
 
     // Extract itemid and filename from the $args array.
-    $itemid = array_shift($args); // The first argument in $args array, often used for item ID.
+    $itemid = array_shift($args); // The first argument in $args array used for item ID.
     $filename = array_pop($args); // The last item in $args array, the filename.
     $filepath = empty($args) ? '/' : '/' . implode('/', $args) . '/'; // Construct the filepath from the remaining args.
 
@@ -141,7 +140,7 @@ function mod_homework_pluginfile(
  * @param int $fileid The file ID to delete.
  * @return bool True if deletion was successful, false otherwise.
  */
-function mod_homework_delete_file($id, $fileid) {
+function mod_homework_delete_file($id, $fileid): bool {
     global $DB;
     $fs = get_file_storage();
 

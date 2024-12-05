@@ -28,7 +28,7 @@ function xmldb_homework_upgrade($oldversion): bool {
     global $DB;
 
     $dbman = $DB->get_manager();
-    if ($oldversion < 2024111201) { // Match this version with the latest in your XMLDB definition.
+    if ($oldversion < 2024111201) {
         // Homework savepoint reached.
         upgrade_mod_savepoint(true, 2024111201, 'homework');
     }

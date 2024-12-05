@@ -26,7 +26,7 @@
 /**
  * Helper function used by the upgrade.php file.
  */
-function mod_homework_helper_function() {
+function mod_homework_helper_function(): void {
     global $DB;
 
     // Please note: you can only use raw low level database access here.

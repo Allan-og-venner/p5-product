@@ -26,7 +26,7 @@
 /**
  * Custom uninstallation procedure.
  */
-function xmldb_homework_uninstall() {
+function xmldb_homework_uninstall(): bool {
 
     return true;
 }

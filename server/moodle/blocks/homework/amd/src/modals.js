@@ -1,7 +1,7 @@
 import Modal from 'core/modal';
 
 /**
- * Homework/amd/src/modal_homework.js
+ * homework/amd/src/modal_homework.js
  *
  * @package
  * @copyright 2024, cs-24-sw-5-01 <cs-24-sw-5-01@student.aau.dk>

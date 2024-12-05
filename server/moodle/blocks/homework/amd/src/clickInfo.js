@@ -3,14 +3,13 @@ import Ajax from 'core/ajax';
 import MyModal from 'block_homework/modals';
 
 /**
- * Homework/amd/src/modal_homework.js
+ * homework/amd/src/modal_homework.js
  *
  * @package
  * @copyright 2024, cs-24-sw-5-01 <cs-24-sw-5-01@student.aau.dk>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  */
-
 
 /**
  * Fetches and initializes the completion modal for the homework module that was clicked on.
@@ -29,12 +28,12 @@ export const init = async(userID, readingspeed) => {
                 },
                 done: async function(response) {
                     const modal = await MyModal.create({
-                        // eslint-disable-next-line max-len
                         title: "<a href='" + response.courseurl + "'>" + response.course + "</a>: <a href='" + response.homeworkurl + "'>" + response.title + "</a> | " + response.duedate,
                         body: `${response.html}`,
                         large: true,
                         removeOnClose: true,
                     });
+
                     // Show the modal.
                     await modal.show();
 
@@ -66,7 +65,7 @@ const handleFormSubmit = (userID, modal) => {
     let literatureInputFields = document.querySelectorAll('.homework-time-literature');
     let linksInputFields = document.querySelectorAll('.homework-time-links');
     let videosInputFields = document.querySelectorAll('.homework-time-videos');
-    let timeData = []
+    let timeData = [];
     // Finds the data of all input fields, both literature, link and video, and adds the ID and time to an array.
     for (let inputField of literatureInputFields) {
         if (inputField.value !== "") {
@@ -101,7 +100,7 @@ const handleFormSubmit = (userID, modal) => {
 
     // If data has been filled, call block_homework_save_homeworktime with the user ID and data
     Ajax.call([{
-        methodname: 'block_homework_save_homeworktime', // Your PHP function that will handle the data
+        methodname: 'block_homework_save_homeworktime',
         args: {
             user: userID,
             timeCompleted: timeData,

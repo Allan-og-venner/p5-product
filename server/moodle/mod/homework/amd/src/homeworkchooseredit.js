@@ -28,7 +28,6 @@ export const init = async(cmid, title, currentHomework, homeworkids) => {
                     const modal = await MyModal.create({
                         title: title,
                         body: `${response.html}`,
-                        // footer: 'An example footer content',
                         large: true,
                         removeOnClose: true
                     });

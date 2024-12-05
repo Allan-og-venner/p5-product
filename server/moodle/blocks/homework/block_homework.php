@@ -32,7 +32,7 @@ class block_homework extends block_base {
      * @return void Saves the title as the correct title and nothing else
      * @throws coding_exception Moodle standard exception if error
      */
-    public function init() {
+    public function init(): void {
         $this->title = get_string('homework', 'block_homework');
     }
 
@@ -40,7 +40,7 @@ class block_homework extends block_base {
      * Retrieves and prepares the content to be displayed by the block
      * @return stdClass|null
      */
-    public function get_content() {
+    public function get_content(): ?stdClass {
 
         global $OUTPUT, $DB, $USER;
 
@@ -230,7 +230,7 @@ class block_homework extends block_base {
      * @return float[]|int[] An assorted array of the stats that will be used for stat generation
      * @throws dml_exception
      */
-    public function getstats() {
+    public function getstats(): array {
         global $DB, $USER;
 
         // The weight indicates the number of minutes after which the user's reading speed will be prioritized over the average.

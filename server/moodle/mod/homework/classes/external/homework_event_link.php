@@ -40,7 +40,7 @@ class homework_event_link extends external_api {
      *
      * @return external_function_parameters Is a definition of the functions parameter type and a description of it.
      */
-    public static function execute_parameters() {
+    public static function execute_parameters(): external_function_parameters {
         return new external_function_parameters([
             'homeworkid' => new external_value(PARAM_INT, 'homework ID'),
             'course_module_id' => new external_value(PARAM_INT, 'Course module ID'),
@@ -57,7 +57,7 @@ class homework_event_link extends external_api {
      * @throws dml_exception
      * @throws invalid_parameter_exception
      */
-    public static function execute($homeworkid, $coursemoduleid, $eventid) {
+    public static function execute($homeworkid, $coursemoduleid, $eventid): array {
         // Validate the parameters.
         $params = self::validate_parameters(self::execute_parameters(), [
             'homeworkid' => $homeworkid,
@@ -86,7 +86,7 @@ class homework_event_link extends external_api {
      *
      * @return external_single_structure Define the return values.
      */
-    public static function execute_returns() {
+    public static function execute_returns(): external_single_structure {
         return new external_single_structure([
             'status' => new external_value(PARAM_TEXT, 'Status of the request'),
             'message' => new external_value(PARAM_TEXT, 'Message with details about the request status'),

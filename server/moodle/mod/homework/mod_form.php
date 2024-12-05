@@ -101,6 +101,6 @@ class mod_homework_mod_form extends moodleform_mod {
      * @param $defaultvalues
      * @return void
      */
-    public function data_preprocessing(&$defaultvalues) {
+    public function data_preprocessing(&$defaultvalues): void {
     }
 }

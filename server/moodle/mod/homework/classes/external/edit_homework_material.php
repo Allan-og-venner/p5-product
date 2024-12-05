@@ -23,8 +23,6 @@
  */
 
 namespace mod_homework\external;
-defined('MOODLE_INTERNAL') || die();
-global $CFG;
 
 use core_external\external_api;
 use core_external\external_function_parameters;
@@ -40,7 +38,7 @@ class edit_homework_material extends external_api {
      *
      * @return external_function_parameters Define the parameters expected by this function.
      */
-    public static function execute_parameters() {
+    public static function execute_parameters(): external_function_parameters {
         return new external_function_parameters([
             'id' => new external_value(PARAM_INT, 'homework id value'),
             'inputfield' => new external_value(PARAM_TEXT, 'Input field value'),
@@ -79,7 +77,7 @@ class edit_homework_material extends external_api {
         $starttime = null,
         $endtime = null,
         $fileid = null
-    ) {
+    ): array {
         global $DB, $USER;
 
         $record = new \stdClass();
@@ -120,7 +118,7 @@ class edit_homework_material extends external_api {
      *
      * @return external_single_structure Define the return values.
      */
-    public static function execute_returns() {
+    public static function execute_returns(): external_single_structure {
         return new external_single_structure([
             'status' => new external_value(PARAM_TEXT, 'Status of the request'),
             'message' => new external_value(PARAM_TEXT, 'Message with details about the request status'),

@@ -25,14 +25,11 @@
  */
 
 namespace mod_homework\external;
-defined('MOODLE_INTERNAL') || die();
-global $CFG;
 
 use core_external\external_api;
 use core_external\external_function_parameters;
 use core_external\external_value;
 use core_external\external_single_structure;
-
 use core\exception\coding_exception;
 use core\output\mustache_engine;
 
@@ -44,7 +41,7 @@ class get_homework_chooser extends external_api {
      *
      * @return external_function_parameters Is a definition of the functions parameter type and a description of it.
      */
-    public static function execute_parameters() {
+    public static function execute_parameters(): external_function_parameters {
         return new external_function_parameters([
             'cmid' => new external_value(PARAM_INT, 'Course Module ID'),
         ]);

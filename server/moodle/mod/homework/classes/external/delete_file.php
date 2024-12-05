@@ -43,7 +43,7 @@ class delete_file extends external_api {
      *
      * @return external_function_parameters
      */
-    public static function execute_parameters() {
+    public static function execute_parameters(): external_function_parameters {
         return new external_function_parameters(
             [
                 'id' => new external_value(PARAM_INT, 'The ID of the homework to update'),
@@ -93,7 +93,7 @@ class delete_file extends external_api {
      *
      * @return external_value
      */
-    public static function execute_returns() {
+    public static function execute_returns(): external_value {
         return new external_value(PARAM_BOOL, 'True if file was deleted successfully');
     }
 }
