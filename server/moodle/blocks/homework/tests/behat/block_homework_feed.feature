@@ -46,6 +46,7 @@ Feature: Enable the homework_feed  block on the dashboard and view its contents
     And I click on "Due Date" "link"
     And I click on "duedateselector[enabled]" "checkbox"
     And I click on "duedateselector[day]" "select"
+    And I expand the "duedateselector[day]"
     And I click on "15" "option"
     And I click on "duedateselector[month]" "select"
     And I click on "October" "option"
