@@ -1,0 +1,50 @@
+name: Upload Moodle Homework Plugin to Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  homework-plugin-upload:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: ZIP block_homework
+      run: |
+        mkdir -p dist
+        zip -r dist/block_homework.zip server/moodle/blocks/homework/
+
+    - name: ZIP mod_homework
+      run: |
+        zip -r dist/mod_homework.zip server/moodle/mod/homework/
+
+    - name: Create or update release
+      id: create_release
+      uses: actions/create-release@v1
+      with:
+        tag_name: 'latest'
+        release_name: 'Homework Plugin'
+        draft: false
+        prerelease: false
+        body: |
+          This release contains the zipped Moodle homework plugins:
+          - block_homework
+          - mod_homework
+
+    - name: Upload block_homework ZIP
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: dist/block_homework.zip
+        asset_name: block_homework.zip
+        asset_content_type: application/zip
+
+    - name: Upload mod_homework ZIP
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: dist/mod_homework.zip
+        asset_name: mod_homework.zip
+        asset_content_type: application/zip
