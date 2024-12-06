@@ -7,11 +7,6 @@ on:
     paths:
       - 'server/moodle/blocks/homework/**'
       - 'server/moodle/mod/homework/**'
-  pull_request:
-    types: [opened, reopened, synchronize]
-    paths:
-      - 'server/moodle/blocks/homework/**'
-      - 'server/moodle/mod/homework/**'
 
 jobs:
   homework-plugin-upload:
