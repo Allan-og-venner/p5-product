@@ -34,7 +34,6 @@ define(function() {
                                     }
                                 });
 
-
                                 // Get the correct homework which has the correct eventid otherwise cancel
                                 let filteredHomework = Object.values(homework).filter((work) => {
                                     return work.eventid === eventid;
@@ -43,10 +42,9 @@ define(function() {
                                     return;
                                 }
 
-
-                                // Determine if the modal is in the dashboard, a course link and a there isn't already a homeworkrow
+                                // Determine if the modal is in the dashboard, a course link and a there isn't already a homeworkRow
                                 if (foundCourseLink && window.location.href.includes("/my") && !document.getElementById("homeworkRow")) {
-                                    // Set the div up accoring to the moodle standard
+                                    // Set the div up according to the moodle standard
                                     const homeworkDiv = document.createElement('div');
                                     homeworkDiv.className = 'row mt-1';
                                     homeworkDiv.id = 'homeworkRow';
@@ -94,12 +92,12 @@ define(function() {
                 const observeBackdrop = () => {
                     // Get the modal
                     const modalBackdrop = document.querySelector('[data-region="modal-backdrop"]');
-                    // Determine if the modalback is there
+                    // Determine if the modal-backdrop is there
                     if (modalBackdrop) {
                         // Start observing when the modal has appeared
                         observer.observe(modalBackdrop, {attributes: true, attributeFilter: ['class']});
                     } else {
-                        // If the modal was not found then try agian every 100 ms
+                        // If the modal was not found then try again every 100 ms
                         setTimeout(observeBackdrop, 100);
                     }
                 };
@@ -107,29 +105,22 @@ define(function() {
                 // Perform an initial check for the modal
                 addContentToModal();
 
-                // Add a eventlisnter to all event buttons
+                // Add an eventlistener to all event buttons
                 document.querySelectorAll('[data-region]').forEach(element => {
                     element.addEventListener('click', addEventListenerToButtons);
                 });
 
-                /**
-                 *
-                 * @param event
-                 */
                 function addEventListenerToButtons(event) {
                     // Determine if the data region is an event button
                     const target = event.target;
                     if (target.classList.contains('eventname') || target.closest('.eventname')) {
                         addContentToModal();
                         observeBackdrop();
-                        // Remove the eventlistner after moodle has appeared due to the observer being better
+                        // Remove the eventlistener after Moodle has appeared due to the observer being better
                         removeEventListeners();
                     }
                 }
 
-                /**
-                 *
-                 */
                 function removeEventListeners() {
                     document.querySelectorAll('[data-region]').forEach(element => {
                         element.removeEventListener('click', addEventListenerToButtons);

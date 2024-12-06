@@ -64,7 +64,6 @@ final class block_homeworkinfomodal_test extends advanced_testcase {
         $homework->duedate = strtotime('2023-10-01 10:00:00');
         $homework->eventid = null;
 
-        // Data1.
         $literature = [
             (object)[
                 'description' => 'Science project on climate change',
@@ -79,7 +78,6 @@ final class block_homeworkinfomodal_test extends advanced_testcase {
             ],
         ];
 
-        // Data2.
         $links = [
             (object)[
                 'description' => 'Reference materials',
@@ -92,7 +90,6 @@ final class block_homeworkinfomodal_test extends advanced_testcase {
             ],
         ];
 
-        // Data3.
         $videos = [
             (object) [
                 'description' => 'Presentation for science project',
@@ -112,7 +109,7 @@ final class block_homeworkinfomodal_test extends advanced_testcase {
 
         // Parse the HTML using DOMDocument to check for the required elements.
         $dom = new DOMDocument();
-        @$dom->loadHTML($result['html']);  // Suppressing warnings from invalid HTML.
+        @$dom->loadHTML($result['html']);
 
         // Check that each element is present in the HTML.
         $this->assertNotNull($dom->getElementById('info-homework-modal'), 'Modal container is missing');
@@ -178,11 +175,9 @@ final class block_homeworkinfomodal_test extends advanced_testcase {
         $homework->duedate = strtotime('2023-10-01 10:00:00');
         $homework->eventid = null;
 
-        // Data1.
         $literature = [
         ];
 
-        // Data2.
         $links = [
             (object)[
                 'description' => 'Reference materials',
@@ -195,7 +190,6 @@ final class block_homeworkinfomodal_test extends advanced_testcase {
             ],
         ];
 
-        // Data3.
         $videos = [
             (object) [
                 'description' => 'Presentation for science project',
@@ -215,7 +209,7 @@ final class block_homeworkinfomodal_test extends advanced_testcase {
 
         // Parse the HTML using DOMDocument to check for the required elements.
         $dom = new DOMDocument();
-        @$dom->loadHTML($result['html']);  // Suppressing warnings from invalid HTML.
+        @$dom->loadHTML($result['html']);
 
         // Check that each element is present in the HTML.
         $this->assertNotNull($dom->getElementById('info-homework-modal'), 'Modal container is missing');
@@ -277,7 +271,6 @@ final class block_homeworkinfomodal_test extends advanced_testcase {
         $homework->duedate = strtotime('2023-10-01 10:00:00');
         $homework->eventid = null;
 
-        // Data1.
         $literature = [
             (object)[
                 'description' => 'Science project on climate change',
@@ -292,11 +285,9 @@ final class block_homeworkinfomodal_test extends advanced_testcase {
             ],
         ];
 
-        // Data2.
         $links = [
         ];
 
-        // Data3.
         $videos = [
             (object) [
                 'description' => 'Presentation for science project',
@@ -316,7 +307,7 @@ final class block_homeworkinfomodal_test extends advanced_testcase {
 
         // Parse the HTML using DOMDocument to check for the required elements.
         $dom = new DOMDocument();
-        @$dom->loadHTML($result['html']);  // Suppressing warnings from invalid HTML.
+        @$dom->loadHTML($result['html']);
 
         // Check that each element is present in the HTML.
         $this->assertNotNull($dom->getElementById('info-homework-modal'), 'Modal container is missing');
@@ -377,7 +368,6 @@ final class block_homeworkinfomodal_test extends advanced_testcase {
         $homework->duedate = strtotime('2023-10-01 10:00:00');
         $homework->eventid = null;
 
-        // Data1.
         $literature = [
             (object)[
                 'description' => 'Science project on climate change',
@@ -392,7 +382,6 @@ final class block_homeworkinfomodal_test extends advanced_testcase {
             ],
         ];
 
-        // Data2.
         $links = [
             (object)[
                 'description' => 'Reference materials',
@@ -405,7 +394,6 @@ final class block_homeworkinfomodal_test extends advanced_testcase {
             ],
         ];
 
-        // Data3.
         $videos = [
         ];
 
@@ -414,7 +402,7 @@ final class block_homeworkinfomodal_test extends advanced_testcase {
 
         // Parse the HTML using DOMDocument to check for the required elements.
         $dom = new DOMDocument();
-        @$dom->loadHTML($result['html']);  // Suppressing warnings from invalid HTML.
+        @$dom->loadHTML($result['html']);
 
         // Check that each element is present in the HTML.
         $this->assertNotNull($dom->getElementById('info-homework-modal'), 'Modal container is missing');

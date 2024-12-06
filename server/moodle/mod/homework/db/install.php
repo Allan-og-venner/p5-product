@@ -26,7 +26,7 @@
 /**
  * Custom code to be run on installing the plugin.
  */
-function xmldb_homework_install() {
+function xmldb_homework_install(): bool {
 
     return true;
 }

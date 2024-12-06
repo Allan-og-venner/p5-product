@@ -31,8 +31,9 @@ class pdf_reader {
     /**
      * Reads the PDF using smalot/pdfparser library, which is also added to the project under moodle/lib/pdfparser
      * returns word count
+     * @throws array|int|string
      */
-    public function countwordsinpdf($file) {
+    public function countwordsinpdf($file): array|int|string {
 
         // Make sure the file object is of type stored_file and contains the correct file path.
         if (!$file instanceof \stored_file) {

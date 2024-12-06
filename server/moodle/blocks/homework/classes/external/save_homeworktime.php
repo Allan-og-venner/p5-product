@@ -15,8 +15,6 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 namespace block_homework\external;
-defined('MOODLE_INTERNAL') || die();
-global $CFG;
 
 use core_external\external_api;
 use core_external\external_multiple_structure;
@@ -35,7 +33,7 @@ class save_homeworktime extends external_api {
      * Use the official Moodle execute_parameters syntax to set up the parameters as a user id and 3 arrays of ID and time.
      * @return external_function_parameters Returns the parameters with the correct strucutre.
      */
-    public static function execute_parameters() {
+    public static function execute_parameters(): external_function_parameters {
         return new external_function_parameters([
             'user' => new external_value(PARAM_INT, 'user id'),
             'timeCompleted' => new external_multiple_structure(new external_single_structure([
@@ -54,7 +52,7 @@ class save_homeworktime extends external_api {
      * @return string[] Returns a success message if successful
      * @throws \dml_exception On error, throws a dml exception as per Moodle standards
      */
-    public static function execute($user, $timecompleted) {
+    public static function execute($user, $timecompleted): array {
         global $DB;
         // Handle the input field value here.
         // For example, save to a database.
@@ -80,7 +78,7 @@ class save_homeworktime extends external_api {
      * The method describing the return value
      * @return external_single_structure
      */
-    public static function execute_returns() {
+    public static function execute_returns(): external_single_structure {
         return new external_single_structure([
             'status' => new external_value(PARAM_TEXT, 'Status of the request'),
             'message' => new external_value(PARAM_TEXT, 'Message with details about the request status'),

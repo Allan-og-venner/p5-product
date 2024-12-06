@@ -1,7 +1,8 @@
 import $ from 'jquery';
 import Ajax from 'core/ajax';
+
 /**
- * Homework/amd/src/filter.js
+ * homework/amd/src/filter.js
  *
  * @package
  * @copyright 2024, cs-24-sw-5-13 <cs-24-sw-5-13@student.aau.dk>

@@ -15,8 +15,7 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * homework/classes/external/get_homework_chooser.php
- * A class defining an external API function
+ * homework/classes/external/get_homework.php
  *
  * @package   block_homework
  * @copyright 2024, cs-24-sw-5-13 <cs-24-sw-5-13@student.aau.dk>
@@ -25,14 +24,11 @@
  */
 
 namespace block_homework\external;
-defined('MOODLE_INTERNAL') || die();
-global $CFG;
 
 use core_external\external_api;
 use core_external\external_function_parameters;
 use core_external\external_value;
 use core_external\external_single_structure;
-
 use dml_exception;
 use JsonException;
 
@@ -44,7 +40,7 @@ class get_homework extends external_api {
      *
      * @return external_function_parameters Is a definition of the functions parameter type and a description of it.
      */
-    public static function execute_parameters() {
+    public static function execute_parameters(): external_function_parameters {
         return new external_function_parameters([
             'sort' => new external_value(PARAM_TEXT, 'Sorting parameter'),
         ]);
@@ -56,7 +52,7 @@ class get_homework extends external_api {
      * @return array - The html to be shown client-side
      * @throws JsonException|dml_exception
      */
-    public static function execute($sort) {
+    public static function execute($sort): array {
         global $DB, $USER;
 
         $usercourses = enrol_get_users_courses($USER->id, true);
@@ -118,7 +114,7 @@ class get_homework extends external_api {
      *
      * @return external_single_structure - Is a definition of the functions return type and a description of it
      */
-    public static function execute_returns() {
+    public static function execute_returns(): external_single_structure {
         return new external_single_structure([
             'homework' => new external_value(PARAM_TEXT, 'Data array of courses'),
         ]);

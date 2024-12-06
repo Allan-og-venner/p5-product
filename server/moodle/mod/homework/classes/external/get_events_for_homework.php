@@ -40,7 +40,7 @@ class get_events_for_homework extends external_api {
      *
      * @return external_function_parameters Define the parameters expected by this function.
      */
-    public static function execute_parameters() {
+    public static function execute_parameters(): external_function_parameters {
         return new external_function_parameters([
             'homeworkid' => new external_value(PARAM_INT, 'Homework ID'),
         ]);
@@ -52,7 +52,7 @@ class get_events_for_homework extends external_api {
      * @return string[]
      * @throws dml_exception
      */
-    public static function execute($homeworkid) {
+    public static function execute($homeworkid): array {
         global $DB;
         // Get the homework data based on the id.
         $homework = $DB->get_record('homework', ['id' => $homeworkid]);
@@ -67,7 +67,7 @@ class get_events_for_homework extends external_api {
                 date("Y-m-d H:i:s", $homeworkevent->timestart) . '<br>';
         }
 
-        // Create an sql query that only gets events which are not already linked.
+        // Create a sql query that only gets events which are not already linked.
         $sql = 'SELECT * FROM {event} e
                     WHERE e.courseid = ?
                     AND e.id NOT IN (
@@ -98,7 +98,7 @@ class get_events_for_homework extends external_api {
      *
      * @return external_single_structure Define the return values.
      */
-    public static function execute_returns() {
+    public static function execute_returns(): external_single_structure {
         return new external_single_structure([
             'events' => new external_value(PARAM_RAW, 'test'),
         ]);

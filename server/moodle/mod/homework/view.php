@@ -26,10 +26,9 @@ require_once('../../config.php');
 
 global $OUTPUT, $PAGE, $DB, $CFG;
 
-use block_homework\external\get_infohomework_modal;
 use mod_homework\view_page;
 
-$id = required_param('id', PARAM_INT);// Course module ID.
+$id = required_param('id', PARAM_INT); // Course module ID.
 [$course, $cm] = get_course_and_cm_from_cmid($id, 'homework');
 $instance = $DB->get_record('homework', ['id' => $cm->instance], '*', MUST_EXIST);
 
@@ -62,7 +61,7 @@ if ($PAGE->has_secondary_navigation()) {
     // Add the submissions node to the secondary navigation.
     $PAGE->secondarynav->add_node($submissionsnode);
     if (has_capability('mod/homework:edit', $context)) {
-        // Example: Add another node, e.g., 'Edit Homework'.
+        // Add another node, 'Edit Homework'.
         try {
             $editnode = navigation_node::create(
                 get_string('edit', 'moodle'),
@@ -78,13 +77,11 @@ if ($PAGE->has_secondary_navigation()) {
     }
 }
 
-// Output the header - REQUIRED.
+// Output the header - REQUIRED BY MOODLE.
 echo $OUTPUT->header();
 
 $viewobj = new view_page();
 $viewobj->canedit = true;
-
-
 
 $homeworkmaterials = $DB->get_records_sql(
     "SELECT hm.*, f.filename
@@ -287,7 +284,7 @@ if ($viewobj->canedit && !$viewobj->hashomework && has_capability('mod/homework:
     $PAGE->requires->js_call_amd('mod_homework/eventlinker', 'init', [$cm->id, $instance->id]);
 }
 
-// Output the footer - REQUIRED.
+// Output the footer - REQUIRED BY MOODLE.
 echo $OUTPUT->footer();
 
 /**

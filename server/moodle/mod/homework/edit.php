@@ -52,7 +52,7 @@ if ($PAGE->has_secondary_navigation()) {
     // Add the submissions node to the secondary navigation.
     $PAGE->secondarynav->add_node($submissionsnode);
 
-    // Example: Add another node, e.g., 'Edit Homework'.
+    // Add another node, 'Edit Homework'.
     $editnode = navigation_node::create(
         get_string('edit', 'moodle'),
         new moodle_url('/mod/homework/edit.php', ['id' => $cm->id]),
@@ -63,7 +63,7 @@ if ($PAGE->has_secondary_navigation()) {
     $PAGE->secondarynav->add_node($editnode);
 }
 
-// Output the header - REQUIRED.
+// Output the header - REQUIRED BY MOODLE.
 echo $OUTPUT->header();
 
 
@@ -215,5 +215,5 @@ $PAGE->requires->js_call_amd('mod_homework/homeworkchooserdelete', 'init', [
         $homeworkmaterialids,
 ]);
 
-// Output the footer - REQUIRED.
+// Output the footer - REQUIRED BY MOODLE.
 echo $OUTPUT->footer();

@@ -15,14 +15,11 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 namespace block_homework\external;
-defined('MOODLE_INTERNAL') || die();
-global $CFG;
 
 use core_external\external_api;
 use core_external\external_function_parameters;
 use core_external\external_value;
 use core_external\external_single_structure;
-
 use coding_exception;
 use dml_exception;
 use JsonException;

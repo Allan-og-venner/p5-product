@@ -24,6 +24,7 @@
 
 require_once(__DIR__ . '/../../config.php');
 global $USER, $CFG;
+
 require_once($CFG->libdir . '/filelib.php');
 require_login();
 
@@ -43,6 +44,7 @@ $fileoptions = [
 ];
 
 // Delete existing file if needed.
+/*
 if (
     $fs->file_exists(
         $fileoptions['contextid'],
@@ -62,6 +64,7 @@ if (
         $fileoptions['filename']
     );
 }
+*/
 
 // Save new file.
 $file = $fs->create_file_from_pathname($fileoptions, $_FILES['file']['tmp_name']);

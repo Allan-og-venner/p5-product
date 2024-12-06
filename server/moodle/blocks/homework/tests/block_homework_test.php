@@ -21,7 +21,6 @@ use block_homework;
 use block_homework\external\get_homework;
 use stdClass;
 
-
 /**
  * Test for block homework
  * @copyright group 11

@@ -8,10 +8,10 @@ import Ajax from "../../../../lib/amd/src/ajax";
  * @param {int} homeworkid
  */
 export const init = async(cmid, homeworkid) => {
-    // Add an eventlistner to the open event linker button.
+    // Add an eventlistener to the open event linker button.
     document.querySelector('#open-event-linker').addEventListener('click', async()=>{
 
-        // Call the server to get all avalible events.
+        // Call the server to get all available events.
         Ajax.call([{
             methodname: 'mod_homework_get_events_for_homework',
             args: {homeworkid: homeworkid},

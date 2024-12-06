@@ -35,7 +35,7 @@ class mod_homework_generator extends testing_module_generator {
      * @return stdClass The homework instance.
      * @throws \dml_exception
      */
-    public function create_instance($record = null, ?array $options = null) {
+    public function create_instance($record = null, ?array $options = null): stdClass {
         global $DB;
 
         // Merge incoming data with defaults.
@@ -73,7 +73,7 @@ class mod_homework_generator extends testing_module_generator {
      * @return void
      * @throws dml_exception
      */
-    public function create_material(array $material) {
+    public function create_material(array $material): void {
         global $DB;
         $DB->insert_record('homework_materials', (object) $material);
     }
