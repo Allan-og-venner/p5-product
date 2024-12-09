@@ -33,6 +33,8 @@ jobs:
         name: 'Homework Plugin'
         draft: false
         prerelease: false
+        make_latest: true
+        remove_assets: true
         on_release_exists: 'update'
         body: |
           This release contains the zipped Moodle homework plugins:
@@ -43,6 +45,7 @@ jobs:
 
     - name: Upload block_homework ZIP
       uses: actions/upload-release-asset@v1
+      if: always()
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: dist/block_homework.zip
@@ -53,6 +56,7 @@ jobs:
 
     - name: Upload mod_homework ZIP
       uses: actions/upload-release-asset@v1
+      if: always()
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: dist/mod_homework.zip
